@@ -1,12 +1,12 @@
 <h1>Lost Pets</h1>
 
-<table>
+<table class="table">
   <tr>
     <th>Name</th>
     <th>Species</th>
     <th>Location</th>
     <th>Date Found</th>
-    <th>Claimed</th>
+    <th colspan="2">Claimed</th>
   </tr>
   <tbody>
     <% @pets.each do |pet| %>
@@ -16,7 +16,11 @@
         <td><%= pet.address.capitalize %></td>
         <td><%= pet.found_on %></td>
         <td><%= pet.claimed ? "claimed" : "unclaimed" %></td>
-        <td><%= link_to "Show", pet_path(pet) %></td>
+        <td>
+          <%= link_to "Show", pet_path(pet) %>
+          <%= link_to "Edit", edit_pet_path(pet) %>
+          <%= link_to "Delete", pet_path(pet), method: :delete, data: { confirm: 'Are you sure you want to delete?'} %>
+        </td>
       </tr>
     <% end %>
   </tbody>

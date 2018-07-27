@@ -1,5 +1,5 @@
 class PetsController < ApplicationController
-  before_action :set_pet, only: [:show]
+  before_action :set_pet, only: [:show, :edit, :update, :delete]
 
   def index
     @pets = Pet.all
@@ -15,9 +15,19 @@ class PetsController < ApplicationController
   end
 
   def create
+    params[:pet][:species].downcase!
     @pet = Pet.new(pet_params)
-    byebug
     @pet.save
+
+    redirect_to pets_path
+  end
+
+  def edit
+  end
+
+  def update
+    params[:pet][:species].downcase!
+    @pet.update(pet_params)
 
     redirect_to pets_path
   end

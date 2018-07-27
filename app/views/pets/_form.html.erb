@@ -1,0 +1,11 @@
+<%= simple_form_for @pet do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :species, collection: Pet::SPECIES.sort.map(&:capitalize), selected: @pet.species %>
+  <%= f.input :found_on, as: :date %>
+
+  <div>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= link_to "Back", :back, class: 'btn btn-primary' %>
+  </div>
+<% end %>
