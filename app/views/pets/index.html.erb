@@ -1,0 +1,35 @@
+<h1>Lost Pets</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Species</th>
+    <th>Location</th>
+    <th>Date Found</th>
+    <th>Claimed</th>
+  </tr>
+  <tbody>
+    <% @pets.each do |pet| %>
+      <tr>
+        <td><%= pet.name.capitalize %></td>
+        <td><%= pet.species.capitalize %></td>
+        <td><%= pet.address.capitalize %></td>
+        <td><%= pet.found_on %></td>
+        <td><%= pet.claimed ? "claimed" : "unclaimed" %></td>
+        <td><%= link_to "Show", pet_path(pet) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Add a Pet", new_pet_path %>
+
+
+
+
+
+
+
+
+
+
